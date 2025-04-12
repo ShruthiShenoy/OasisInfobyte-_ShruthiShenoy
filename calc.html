@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Calculator Task 1 </title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="calculator">
+<div id="display">
+  <span id="display-text">0</span>
+  <span id="backspace">⌫</span>
+</div>
+
+<div id="buttons">
+<button>C</button>
+<button>()</button>
+<button>%</button>
+<button>÷</button>
+
+<button>7</button>
+<button>8</button>
+<button>9</button>
+<button>x</button>
+
+<button>4</button>
+<button>5</button>
+<button>6</button>
+<button>-</button>
+
+<button>1</button>
+<button>2</button>
+<button>3</button>
+<button>+</button>
+
+<button>+/-</button>
+<button>0</button>
+<button>.</button>
+<button>=</button>
+</div>
+</div>
+<script>
+  let display = document.getElementById("display-text");
+  let buttons = document.querySelectorAll("#buttons button");
+  let backspaceBtn = document.getElementById("backspace");
+  let currentInput = "";
+
+  buttons.forEach(button => {
+    button.addEventListener("click", () => {
+      const value = button.textContent;
+
+      if (value === "C") 
+      {
+        currentInput = "";
+        display.textContent = "0";
+      } 
+      else if (value === "=")
+      {
+        try 
+        {
+          let expression = currentInput.replace(/÷/g, "/").replace(/x/g, "*").replace(/%/g, "/100");
+          display.textContent = eval(expression);
+          currentInput = display.textContent;
+        } 
+	catch 
+        {
+          display.textContent = "Error";
+          currentInput = "";
+        }
+      } 
+      else if (value === "()") 
+     {
+        if (currentInput.includes("(") && !currentInput.includes(")")) 
+        {
+          currentInput += ")";
+        }
+        else 
+        {
+          currentInput += "(";
+        }
+        display.textContent = currentInput;
+      } 
+      else if (value === "+/-") 
+      {
+  	let match = currentInput.match(/(-?\d+\.?\d*)$/);
+  	if (match) 
+	{
+   	 let number = match[0];
+   	 let startIndex = currentInput.lastIndexOf(number);
+    
+    	let toggled = number.startsWith("-") ? number.slice(1) : "-" + number;
+    
+    	currentInput = currentInput.slice(0, startIndex) + toggled;
+    	display.textContent = currentInput;
+  	}
+	}
+      else 
+	{
+        currentInput += value;
+        display.textContent = currentInput;
+      }
+    });
+  });
+
+  backspaceBtn.addEventListener("click", () => {
+    currentInput = currentInput.slice(0, -1);
+    display.textContent = currentInput || "0";
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tribute page</title>
+  <style>
+    h1 {
+      font-family: 'Georgia', serif;
+    }
+
+    p {
+      font-family: 'Arial', sans-serif;
+    }
+
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #FF7518;
+      color: white;
+      padding: 15px 0;
+      text-align: center;
+      z-index: 1000;
+    }
+
+    hr {
+      margin: 20px 0;
+      border: none;
+      border-top: 2px solid #FF7518;
+    }
+
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #FF7518;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+      z-index: 1000;
+    }
+
+    body {
+      padding: 20px;
+      padding-top: 70px;
+      padding-bottom: 70px;
+      margin: 0;
+      background-color: #FAFF74;
+    }
+
+    #Header h1 {
+      text-align: center;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 20px;
+    }
+
+    .text {
+      width: 65%;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .image {
+      width: 30%;
+    }
+
+    .image img {
+      width: 200px;
+      height: 300px;
+      border-radius: 5px;
+    }
+
+    .gallery {
+      text-align: center;
+      padding: 30px;
+    }
+
+    .gallery img {
+      width: 300px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .gallery-buttons button {
+      padding: 10px 20px;
+      font-size: 18px;
+      margin: 0 10px;
+      cursor: pointer;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .gallery h1 {
+      font-size: 20px;
+      margin: 10px 0 5px;
+    }
+
+    .gallery p {
+      font-size: 16px;
+      margin: 5px 0;
+      padding: 0 20px;
+    }
+
+    .gallery-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .nav-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #333;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 5px;
+      opacity: 0.8;
+    }
+
+    .nav-button.left {
+      left: -50px;
+    }
+
+    .nav-button.right {
+      right: -50px;
+    }
+
+    .carousel-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 30px;
+    }
+
+    .arrow {
+      font-size: 2rem;
+      cursor: pointer;
+      user-select: none;
+      color: #fff;
+      background-color: #FF7518;
+      border-radius: 5px;
+      padding: 5px 10px;
+    }
+
+    .carousel {
+      display: flex;
+      overflow: hidden;
+      width: 900px;
+      justify-content: center;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .card 
+   {
+  width: 280px;
+  height: 350px;
+  margin: 0 10px;
+  text-align: center;
+  background-color: white;
+  border: 2px solid #000;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+  }
+
+    .card img {
+      width: 100%;
+      height: 280px;
+      object-fit: contain;
+      border: 2px solid #000;
+      background-color: #f9f9f9;;
+    }
+
+    .card p {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>LIFE OF ABDUL KALAM</h1>
+  </div>
+  <hr>
+
+  <div class="container">
+    <div class="text">
+      <p>
+        A.P.J. Abdul Kalam (born October 15, 1931, Rameswaram, India—died July 27, 2015, Shillong) was an Indian scientist and politician who played a leading role in the development of India’s missile and nuclear weapons programs. He was president of India from 2002 to 2007. His scientific achievements and popularity gained him the epithets “Missile Man” and “People’s President.”<br><br>
+        <strong>Notable works:</strong><br>
+        > Wings of Fire <br>
+        > India 2020 <br>
+        > Ignited Minds <br>
+        > Indomitable Spirit <br>
+        > Transcendence: My Spiritual Experiences with Pramukh Swamiji
+      </p>
+    </div>
+    <div class="image">
+      <a href="https://en.wikipedia.org/wiki/A._P._J._Abdul_Kalam"><img src="pic.png" alt="APJ Abdul Kalam"></a>
+    </div>
+  </div>
+
+  <hr>
+<div style="text-align: center;">
+  <h2>Achievements</h2>
+</div>
+  <div class="gallery">
+    <div class="gallery-wrapper">
+      <button class="nav-button left" onclick="prevImage()">&lt;</button>
+      <img id="gallery-image" src="img1.png" alt="Gallery Image">
+      <button class="nav-button right" onclick="nextImage()">&gt;</button>
+    </div>
+    <h1 id="gallery-caption">Launching Agni Missile</h1>
+    <p id="gallery-description">
+      Dr. Kalam was a key figure in India's missile development program. Here, he is seen launching the Agni missile, a major step in defense technology.
+    </p>
+  </div>
+
+  <hr>
+<div style="text-align: center;">
+  <h2>Books by Dr. A.P.J. Abdul Kalam</h2>
+</div>
+  <div class="carousel-container">
+    <div class="arrow" id="left">&lt;</div>
+    <div class="carousel" id="carousel">
+      <div class="carousel-track" id="track"></div>
+    </div>
+    <div class="arrow" id="right">&gt;</div>
+  </div>
+
+<hr>
+
+  <footer class="footer">
+    <p>© 2025 Tribute to Dr. A.P.J. Abdul Kalam</p>
+  </footer>
+
+  <script>
+    // Gallery images
+    const images = [
+      {
+        src: "pic1.jpg",
+        caption: "Launching Agni Missile",
+        desc: "Dr. Kalam was a key figure in India's missile development program. Here, he is seen launching the Agni missile, a major step in defense technology."
+      },
+      {
+        src: "pic2.png",
+        caption: "ISRO Satellite Center",
+        desc: "Kalam's contribution to ISRO and the SLV-III project played a vital role in India's space ambitions."
+      },
+      {
+        src: "pic3.jpg",
+        caption: "President of India",
+        desc: "Kalam served as the 11th President of India from 2002 to 2007, known for being the 'People’s President'."
+      },
+      {
+        src: "img4.jpg",
+        caption: "Speaking with Students",
+        desc: "He was deeply passionate about education and inspired millions of students across India."
+      },
+      {
+        src: "img5.jpg",
+        caption: "Receiving Bharat Ratna",
+        desc: "India’s highest civilian award, the Bharat Ratna, was conferred to Kalam for his immense contributions to science and public life."
+      }
+    ];
+
+    let current = 0;
+
+    function showImage(index) {
+      document.getElementById("gallery-image").src = images[index].src;
+      document.getElementById("gallery-caption").innerText = images[index].caption;
+      document.getElementById("gallery-description").innerText = images[index].desc;
+    }
+
+    function nextImage() {
+      current = (current + 1) % images.length;
+      showImage(current);
+    }
+
+    function prevImage() {
+      current = (current - 1 + images.length) % images.length;
+      showImage(current);
+    }
+
+    showImage(0);
+
+    // Book carousel
+    const books = [
+      { src: "book1.jpg", title: "Wings of Fire" },
+      { src: "book2.jpg", title: "India 2020" },
+      { src: "book3.jpg", title: "Ignited Minds" },
+      { src: "book4.jpg", title: "Indomitable Spirit" },
+      { src: "book5.jpg", title: "Transcendence" }
+    ];
+
+    const track = document.getElementById("track");
+    let currentIndex = 0;
+
+    function renderCarousel() {
+      track.innerHTML = "";
+      for (let i = 0; i < 3; i++) {
+        const index = (currentIndex + i) % books.length;
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+          <img src="${books[index].src}" alt="${books[index].title}">
+          <p>${books[index].title}</p>
+        `;
+        track.appendChild(card);
+      }
+    }
+
+    document.getElementById("right").addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % books.length;
+      renderCarousel();
+    });
+
+    document.getElementById("left").addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + books.length) % books.length;
+      renderCarousel();
+    });
+
+    renderCarousel();
+  </script>
+</body>
+</html>

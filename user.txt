@@ -1,0 +1,90 @@
+import java.util.Scanner;
+
+public class loginsystem 
+{
+    static String[] usernames = new String[10];
+    static String[] passwords = new String[10];
+    static int userCount = 0;
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        boolean running = true;
+
+        while (running) {
+            System.out.println("\n==== Simple Login System ====");
+            System.out.println("1. Register");
+            System.out.println("2. Login");
+            System.out.println("3. Exit");
+            System.out.print("Enter choice: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine(); 
+            switch (choice) {
+                case 1:
+                    register(scanner);
+                    break;
+                case 2:
+                    login(scanner);
+                    break;
+                case 3:
+                    System.out.println("Exiting... Thank you!");
+                    running = false;
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        }
+
+        scanner.close();
+    }
+
+    public static void register(Scanner scanner) 
+{
+        if (userCount >= usernames.length) 
+	{
+            System.out.println("User limit reached. Cannot register more users.");
+            return;
+        }
+
+        System.out.print("Enter new username: ");
+        String username = scanner.nextLine();
+
+        for (int i = 0; i < userCount; i++) {
+            if (usernames[i].equals(username)) {
+                System.out.println("Username already taken. Try a different one.");
+                return;
+            }
+        }
+
+        System.out.print("Enter password: ");
+        String password = scanner.nextLine();
+
+        usernames[userCount] = username;
+        passwords[userCount] = password;
+        userCount++;
+
+        System.out.println("Registration successful!");
+    }
+
+    public static void login(Scanner scanner) {
+        System.out.print("Enter username: ");
+        String username = scanner.nextLine();
+
+        System.out.print("Enter password: ");
+        String password = scanner.nextLine();
+
+        for (int i = 0; i < userCount; i++) {
+            if (usernames[i].equals(username) && passwords[i].equals(password)) {
+                System.out.println("Login successful!");
+                securedPage(username);
+                return;
+            }
+        }
+
+        System.out.println("Invalid credentials. Please try again.");
+    }
+
+    public static void securedPage(String username) {
+        System.out.println("\n*** Welcome to the Secured Page, " + username + "! ***");
+        System.out.println("Here you can access secure content!");
+    }
+}
